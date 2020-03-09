@@ -3,14 +3,64 @@ import { Box, Button, makeStyles } from '@material-ui/core';
 import whiteArrow from '../Assets/White_Arrow.svg';
 import { InputField } from './TextField';
 
-const useStyles = makeStyles({
+// const useStyles = makeStyles(theme => ({
+//   container: {
+//     backgroundColor: '#585858',
+//     paddingTop: '32px',
+//     [theme.breakpoints.down('sm')]: {
+//       paddingBottom: '32px',
+//       paddingLeft: '8px',
+//       width: '100vw'
+//     },
+//     [theme.breakpoints.up('md')]: {
+//       paddingRight: '80px',
+//       paddingLeft: '168px',
+//       height: '100vh'
+//     }
+//   },
+//   info: {
+//     [theme.breakpoints.down('sm')]: {
+//       width: '100vw'
+//     },
+//     [theme.breakpoints.up('md')]: {
+//       width: '535px'
+//     }
+//   },
+//   logo: {
+//     height: '26px',
+//     width: '177px'
+//   },
+//   title: {
+//     color: '#FFFFFF',
+//     paddingTop: '32px',
+//     [theme.breakpoints.down('sm')]: {
+//       fontSize: '24px'
+//     },
+//     [theme.breakpoints.up('md')]: {
+//       fontSize: '32px'
+//     }
+//   },
+//   subTitle: {
+//     color: '#EAEAEA ',
+//     fontSize: '14px '
+//   }
+// }));
+
+const useStyles = makeStyles(theme => ({
   container: {
-    width: '376px',
     display: 'flex',
     flexDirection: 'column',
-    paddingTop: '60px',
-    paddingLeft: '24px',
-    paddingRight: '24px'
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '24px',
+      paddingRight: '24px',
+      paddingTop: '32px'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '376px',
+      paddingLeft: '8px',
+      paddingRight: '8px',
+      paddingTop: '60px'
+    }
   },
   form: {
     display: 'flex',
@@ -26,9 +76,14 @@ const useStyles = makeStyles({
     marginTop: '36px',
     paddingLeft: '24p',
     paddingRight: '24px',
-    width: '100px'
+    [theme.breakpoints.down('sm')]: {
+      // paddingTop: '32px'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '100px',
+    }
   }
-});
+}));
 
 const emptyState = {
   firstName: { value: '', error: false },
@@ -85,33 +140,33 @@ export const Form = () => {
 
   return (
     <Box className={classes.container}>
-        <InputField
-          field={formState.firstName}
-          validateField={() => validateField('firstName')}
-          changeField={(e: any) => handleChange('firstName', e.target.value)}
-          label="first name"
-          required
-        />
-        <InputField
-          field={formState.lastName}
-          validateField={() => validateField('lastName')}
-          changeField={(e: any) => handleChange('lastName', e.target.value)}
-          label="last name"
-          required
-        />
-        <InputField
-          field={formState.address}
-          validateField={() => validateField('address')}
-          changeField={(e: any) => handleChange('address', e.target.value)}
-          label="address"
-          required
-        />
-        <InputField
-          field={formState.addressTwo}
-          changeField={(e: any) => handleChange('addressTwo', e.target.value)}
-          label="address two"
-          required
-        />
+      <InputField
+        field={formState.firstName}
+        validateField={() => validateField('firstName')}
+        changeField={(e: any) => handleChange('firstName', e.target.value)}
+        label="first name"
+        required
+      />
+      <InputField
+        field={formState.lastName}
+        validateField={() => validateField('lastName')}
+        changeField={(e: any) => handleChange('lastName', e.target.value)}
+        label="last name"
+        required
+      />
+      <InputField
+        field={formState.address}
+        validateField={() => validateField('address')}
+        changeField={(e: any) => handleChange('address', e.target.value)}
+        label="address"
+        required
+      />
+      <InputField
+        field={formState.addressTwo}
+        changeField={(e: any) => handleChange('addressTwo', e.target.value)}
+        label="address two(optional)"
+        required
+      />
       <Button
         disabled={!isValidForm()}
         onClick={handleClick}
