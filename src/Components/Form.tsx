@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Button, TextField, makeStyles } from '@material-ui/core';
-// import WhiteArrow from '../Assets/White_Arrow.svg';
-import whitearrow from '../Assets/White_Arrow.svg';
+import whiteArrow from '../Assets/White_Arrow.svg';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -59,7 +58,7 @@ export const Form = () => {
         />
       </form>
       <Button className={classes.button}>
-        next <img src={whitearrow} alt={'Logo'} />
+        next <img src={whiteArrow} alt={'Logo'} />
       </Button>
     </Box>
   );
