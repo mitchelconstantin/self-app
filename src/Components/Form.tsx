@@ -1,50 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, makeStyles } from '@material-ui/core';
 import whiteArrow from '../Assets/White_Arrow.svg';
-import { InputField } from './TextField';
-
-// const useStyles = makeStyles(theme => ({
-//   container: {
-//     backgroundColor: '#585858',
-//     paddingTop: '32px',
-//     [theme.breakpoints.down('sm')]: {
-//       paddingBottom: '32px',
-//       paddingLeft: '8px',
-//       width: '100vw'
-//     },
-//     [theme.breakpoints.up('md')]: {
-//       paddingRight: '80px',
-//       paddingLeft: '168px',
-//       height: '100vh'
-//     }
-//   },
-//   info: {
-//     [theme.breakpoints.down('sm')]: {
-//       width: '100vw'
-//     },
-//     [theme.breakpoints.up('md')]: {
-//       width: '535px'
-//     }
-//   },
-//   logo: {
-//     height: '26px',
-//     width: '177px'
-//   },
-//   title: {
-//     color: '#FFFFFF',
-//     paddingTop: '32px',
-//     [theme.breakpoints.down('sm')]: {
-//       fontSize: '24px'
-//     },
-//     [theme.breakpoints.up('md')]: {
-//       fontSize: '32px'
-//     }
-//   },
-//   subTitle: {
-//     color: '#EAEAEA ',
-//     fontSize: '14px '
-//   }
-// }));
+import { InputField } from './InputField';
 
 const useStyles = makeStyles(theme => ({
   container: {
