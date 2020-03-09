@@ -17,16 +17,13 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     marginBottom: '48px'
   },
-  textField: {
-    marginTop: '12px',
-    marginBottom: '12px'
-  },
   button: {
     backgroundColor: '#FFAB44',
     color: '#FFFFFF',
     fontSize: '16px',
     borderRadius: '6px',
     height: '48px',
+    marginTop: '36px',
     paddingLeft: '24p',
     paddingRight: '24px',
     width: '100px'
@@ -88,7 +85,6 @@ export const Form = () => {
 
   return (
     <Box className={classes.container}>
-      <form className={classes.form} noValidate autoComplete="off">
         <InputField
           field={formState.firstName}
           validateField={() => validateField('firstName')}
@@ -116,7 +112,6 @@ export const Form = () => {
           label="address two"
           required
         />
-      </form>
       <Button
         disabled={!isValidForm()}
         onClick={handleClick}
