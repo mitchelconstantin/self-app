@@ -7,28 +7,25 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
     color: '#666666',
     fontFamily: 'Merriweather',
-    fontWeight: 500
+    fontWeight: 500,
+    marginTop: '12px'
   },
   errorLabel: {
-    color: 'red'
+    color: '#E70000'
   },
   textField: {
-    marginTop: '12px',
+    [`& fieldset`]: {
+      borderRadius: '6px',
+    },
+    borderRadius: '6px',
     marginBottom: '12px',
     height: '48px',
     '& input:valid': {
-      backgroundColor: '#EAEAEA'
-    },
-    '& input:invalid': {
-      backgroundColor: 'green',
-      borderColor: 'green'
-      // borderWidth: 2
+      backgroundColor: '#EAEAEA',
+      borderColor: 'blue'
     },
     '& input:focus': {
       backgroundColor: '#FFFFFF',
-      bordorColor: 'yellow'
-      // borderLeftWidth: 6,
-      // padding: '4px !important' // override inline-style
     }
   }
 });
@@ -52,18 +49,16 @@ export const InputField = ({
   const formattedLabel = field.error ? `${label} required` : label;
   if (!required) {
     return (
-      <TextField
-        className={classes.textField}
-        error={field.error}
-        value={field.value}
-        //@ts-ignore
-        onChange={changeField}
-        label={label}
-        InputLabelProps={{
-          shrink: true
-        }}
-        variant="outlined"
-      />
+      <>
+        <Typography className={classes.label}>{formattedLabel}</Typography>
+        <TextField
+          className={classes.textField}
+          value={field.value}
+          //@ts-ignore
+          onChange={changeField}
+          variant="outlined"
+        />
+      </>
     );
   }
   return (
@@ -74,16 +69,11 @@ export const InputField = ({
         {formattedLabel}
       </Typography>
       <TextField
-        // required
         className={classes.textField}
         error={field.error}
         onBlur={validateField}
         value={field.value}
         onChange={changeField}
-        // label={formattedLabel}
-        InputLabelProps={{
-          shrink: true
-        }}
         variant="outlined"
       />
     </>
