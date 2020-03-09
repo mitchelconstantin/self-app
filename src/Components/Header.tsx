@@ -2,13 +2,13 @@ import React from 'react';
 import { Box, makeStyles, Typography } from '@material-ui/core';
 import giantRobot from '../Assets/GiantRobotLTD_Logo.svg';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     backgroundColor: '#585858',
     paddingTop: '32px',
     paddingRight: '80px',
     paddingLeft: '168px',
-    height: '100vh',
+    height: '100vh'
   },
   info: {
     width: '535px'
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     color: '#EAEAEA ',
     fontSize: '14px '
   }
-}));
+});
 
 export const Header = () => {
   const classes = useStyles();

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Button, TextField, makeStyles } from '@material-ui/core';
+import { Box, Button, makeStyles } from '@material-ui/core';
 import whiteArrow from '../Assets/White_Arrow.svg';
+import { InputField } from './TextField';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   container: {
     width: '376px',
     display: 'flex',
@@ -30,13 +31,10 @@ const useStyles = makeStyles(theme => ({
     paddingRight: '24px',
     width: '100px'
   }
-}));
+});
 
 const emptyState = {
-  firstName: {
-    value: '',
-    error: false
-  },
+  firstName: { value: '', error: false },
   lastName: { value: '', error: false },
   address: { value: '', error: false },
   addressTwo: { value: '', error: false }
@@ -44,7 +42,6 @@ const emptyState = {
 export const Form = () => {
   const classes = useStyles();
   const [formState, setFormState] = useState(emptyState);
-  // const [errors, setErrors] = useState;
 
   const handleChange = (type: string, newValue: any) => {
     //@ts-ignore
@@ -92,42 +89,32 @@ export const Form = () => {
   return (
     <Box className={classes.container}>
       <form className={classes.form} noValidate autoComplete="off">
-        <TextField
-          className={classes.textField}
+        <InputField
+          field={formState.firstName}
+          validateField={() => validateField('firstName')}
+          changeField={(e: any) => handleChange('firstName', e.target.value)}
+          label="first name"
           required
-          error={formState.firstName.error}
-          onBlur={() => validateField('firstName')}
-          value={formState.firstName.value}
-          onChange={e => handleChange('firstName', e.target.value)}
-          label="FIRST NAME"
-          variant="outlined"
         />
-        <TextField
-          className={classes.textField}
+        <InputField
+          field={formState.lastName}
+          validateField={() => validateField('lastName')}
+          changeField={(e: any) => handleChange('lastName', e.target.value)}
+          label="last name"
           required
-          error={formState.lastName.error}
-          onBlur={() => validateField('lastName')}
-          value={formState.lastName.value}
-          onChange={e => handleChange('lastName', e.target.value)}
-          label="LAST NAME"
-          variant="outlined"
         />
-        <TextField
-          className={classes.textField}
+        <InputField
+          field={formState.address}
+          validateField={() => validateField('address')}
+          changeField={(e: any) => handleChange('address', e.target.value)}
+          label="address"
           required
-          error={formState.address.error}
-          onBlur={() => validateField('address')}
-          value={formState.address.value}
-          onChange={e => handleChange('address', e.target.value)}
-          label="ADDRESS"
-          variant="outlined"
         />
-        <TextField
-          className={classes.textField}
-          value={formState.addressTwo.value}
-          onChange={e => handleChange('addressTwo', e.target.value)}
-          label="ADRESS 2 (OPTIONAL)"
-          variant="outlined"
+        <InputField
+          field={formState.addressTwo}
+          changeField={(e: any) => handleChange('addressTwo', e.target.value)}
+          label="address two"
+          required
         />
       </form>
       <Button
