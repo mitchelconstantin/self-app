@@ -33,41 +33,71 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const emptyState = {
-  firstName: '',
-  lastName: '',
-  address: '',
-  addressTwo: ''
+  firstName: {
+    value: '',
+    error: false
+  },
+  lastName: { value: '', error: false },
+  address: { value: '', error: false },
+  addressTwo: { value: '', error: false }
 };
 export const Form = () => {
   const classes = useStyles();
   const [formState, setFormState] = useState(emptyState);
+  // const [errors, setErrors] = useState;
 
   const handleChange = (type: string, newValue: any) => {
-    setFormState(prev => ({ ...prev, [type]: newValue }));
+    //@ts-ignore
+    setFormState((prev: any) => ({
+      ...prev,
+      //@ts-ignore
+      [type]: { ...prev[type], value: newValue }
+    }));
   };
   const isValidForm = (): boolean =>
-    Boolean(formState.firstName && formState.lastName && formState.address);
+    Boolean(
+      formState.firstName.value &&
+        formState.lastName.value &&
+        formState.address.value
+    );
 
   const handleClick = () => {
-    const { firstName, lastName, address, addressTwo } = formState;
     alert(
       `
       submitting this date:
-      first name : ${firstName}
-      last name : ${lastName}
-      address : ${address}
-      address two : ${addressTwo}
+      first name : ${formState.firstName.value}
+      last name : ${formState.lastName.value}
+      address : ${formState.address.value}
+      address two : ${formState.addressTwo.value}
       `
-    ); 
+    );
     setFormState(emptyState);
   };
+
+  const validateField = (fieldName: string) => {
+    //@ts-ignore
+    if (formState[fieldName].value) {
+      setFormState((prev: any) => ({
+        ...prev,
+        [fieldName]: { ...prev[fieldName], error: false }
+      }));
+      return;
+    }
+    setFormState((prev: any) => ({
+      ...prev,
+      [fieldName]: { ...prev[fieldName], error: true }
+    }));
+  };
+
   return (
     <Box className={classes.container}>
       <form className={classes.form} noValidate autoComplete="off">
         <TextField
           className={classes.textField}
           required
-          value={formState.firstName}
+          error={formState.firstName.error}
+          onBlur={() => validateField('firstName')}
+          value={formState.firstName.value}
           onChange={e => handleChange('firstName', e.target.value)}
           label="FIRST NAME"
           variant="outlined"
@@ -75,7 +105,9 @@ export const Form = () => {
         <TextField
           className={classes.textField}
           required
-          value={formState.lastName}
+          error={formState.lastName.error}
+          onBlur={() => validateField('lastName')}
+          value={formState.lastName.value}
           onChange={e => handleChange('lastName', e.target.value)}
           label="LAST NAME"
           variant="outlined"
@@ -83,14 +115,16 @@ export const Form = () => {
         <TextField
           className={classes.textField}
           required
-          value={formState.address}
+          error={formState.address.error}
+          onBlur={() => validateField('address')}
+          value={formState.address.value}
           onChange={e => handleChange('address', e.target.value)}
           label="ADDRESS"
           variant="outlined"
         />
         <TextField
           className={classes.textField}
-          value={formState.addressTwo}
+          value={formState.addressTwo.value}
           onChange={e => handleChange('addressTwo', e.target.value)}
           label="ADRESS 2 (OPTIONAL)"
           variant="outlined"
