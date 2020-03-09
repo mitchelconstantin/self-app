@@ -32,6 +32,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     color: '#FFFFFF',
     paddingTop: '32px',
+    fontFamily: 'Roboto',
+    fontWeight: 700,
     [theme.breakpoints.down('sm')]: {
       fontSize: '24px'
     },
@@ -40,6 +42,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   subTitle: {
+    fontFamily: 'Merriweather',
+    fontWeight: 400,
     color: '#EAEAEA ',
     fontSize: '14px '
   }

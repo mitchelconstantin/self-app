@@ -71,6 +71,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#FFAB44',
     color: '#FFFFFF',
     fontSize: '16px',
+    fontFamily: 'Roboto',
+    fontWeight: 700,
     borderRadius: '6px',
     height: '48px',
     marginTop: '36px',
@@ -80,8 +82,13 @@ const useStyles = makeStyles(theme => ({
       // paddingTop: '32px'
     },
     [theme.breakpoints.up('md')]: {
-      width: '100px',
+      width: '100px'
     }
+  },
+  arrow: {
+    height: '10px',
+    width: '10px',
+    marginLeft: '10px'
   }
 }));
 
@@ -172,7 +179,7 @@ export const Form = () => {
         onClick={handleClick}
         className={classes.button}
       >
-        next <img src={whiteArrow} alt={'Logo'} />
+        next <img className={classes.arrow} src={whiteArrow} alt={'Logo'} />
       </Button>
     </Box>
   );
