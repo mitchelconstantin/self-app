@@ -7,15 +7,13 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    paddingLeft: '24px',
+    paddingRight: '24px',
     [theme.breakpoints.down('sm')]: {
-      paddingLeft: '24px',
-      paddingRight: '24px',
       paddingTop: '32px'
     },
     [theme.breakpoints.up('md')]: {
       width: '376px',
-      paddingLeft: '8px',
-      paddingRight: '8px',
       paddingTop: '60px'
     }
   },
@@ -36,7 +34,6 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '24p',
     paddingRight: '24px',
     [theme.breakpoints.down('sm')]: {
-      // paddingTop: '32px'
     },
     [theme.breakpoints.up('md')]: {
       width: '100px'
@@ -63,7 +60,6 @@ export const Form = () => {
     //@ts-ignore
     setFormState((prev: any) => ({
       ...prev,
-      //@ts-ignore
       [type]: { ...prev[type], value: newValue }
     }));
   };

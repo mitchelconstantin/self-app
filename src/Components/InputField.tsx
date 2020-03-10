@@ -15,17 +15,17 @@ const useStyles = makeStyles({
   },
   textField: {
     [`& fieldset`]: {
-      borderRadius: '6px',
+      borderRadius: '6px'
     },
     borderRadius: '6px',
     marginBottom: '12px',
     height: '48px',
     '& input:valid': {
       backgroundColor: '#EAEAEA',
-      borderColor: 'blue'
     },
     '& input:focus': {
       backgroundColor: '#FFFFFF',
+      borderColor: '#00ADEE'
     }
   }
 });
@@ -47,20 +47,7 @@ export const InputField = ({
 }: props) => {
   const classes = useStyles();
   const formattedLabel = field.error ? `${label} required` : label;
-  if (!required) {
-    return (
-      <>
-        <Typography className={classes.label}>{formattedLabel}</Typography>
-        <TextField
-          className={classes.textField}
-          value={field.value}
-          //@ts-ignore
-          onChange={changeField}
-          variant="outlined"
-        />
-      </>
-    );
-  }
+
   return (
     <>
       <Typography
@@ -71,7 +58,7 @@ export const InputField = ({
       <TextField
         className={classes.textField}
         error={field.error}
-        onBlur={validateField}
+        onBlur={required && validateField}
         value={field.value}
         onChange={changeField}
         variant="outlined"
